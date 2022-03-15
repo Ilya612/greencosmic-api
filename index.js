@@ -51,10 +51,6 @@ app.use(express.json());
 app.use("/api", router);
 app.use(errorMiddleware);
 
-app.listen(PORT, () => {
-  console.log("axuenno " + PORT);
-});
-/*
 const start = async () => {
   try {
     await mongoose.connect(process.env.DB_URL, {
@@ -69,4 +65,4 @@ const start = async () => {
   }
 };
 
-start();*/
+start();

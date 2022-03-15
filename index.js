@@ -9,7 +9,7 @@ import errorMiddleware from "./Middleware/errorMiddleware.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3002;
+const PORT = 3002;
 
 /*const DB_URL =
   "mongodb+srv://Jobs_Sneakers:a2tmi0fap5PIOBW4@cluster0.vugol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";

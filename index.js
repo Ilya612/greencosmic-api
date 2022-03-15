@@ -42,26 +42,29 @@ const app = express();
 });*/
 app.use(cookieParser());
 app.use(express.json());
-app.use(
+/*app.use(
   cors({
     credentials: true,
     origin: "http://localhost:3000",
   })
-);
+);*/
 app.use("/api", router);
 app.use(errorMiddleware);
+
+app.listen(PORT, () => {
+  console.log("axuenno " + PORT);
+});
 /*
 const start = async () => {
   try {
-    await*/
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-app.listen(PORT, () => {
-  console.log("vse zaebcom " + PORT);
-});
-/* } catch (error) {
+    await mongoose.connect(process.env.DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    app.listen(PORT, () => {
+      console.log("vse zaebcom " + PORT);
+    });
+  } catch (error) {
     throw new Error();
   }
 };

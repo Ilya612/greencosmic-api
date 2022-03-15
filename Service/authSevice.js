@@ -7,7 +7,7 @@ import ApiError from "../Exceptions/apiErrors.js";
 import EcommpayService from "./ecommpayService.js";
 
 import { v4 as uuid } from "uuid";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 class authService {
   async registration(body) {

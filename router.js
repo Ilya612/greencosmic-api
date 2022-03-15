@@ -82,6 +82,9 @@ router.post(
 );
 router.post("/course/progress/get/steps", courseController.getProgressSteps);
 
+router.get("/test", (req, res) => {
+  return res.status(200).json({ message: "fucked you up" });
+});
 /////////////////////////
 /*router.post(
   "/course/personal",

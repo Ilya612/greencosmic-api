@@ -42,12 +42,12 @@ const app = express();
 });*/
 app.use(cookieParser());
 app.use(express.json());
-/*app.use(
+app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "https://greencosmic-study-1i4soiig5-ilya612.vercel.app/",
   })
-);*/
+);
 app.use("/api", router);
 app.use(errorMiddleware);
 

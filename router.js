@@ -48,6 +48,8 @@ router.get("/users", authMiddleware, controller.getUsers);
 router.post("/payment", EcommpayController.paymentCreate);
 router.post("/payment/callback", EcommpayController.paymnetCallback);
 router.post("/create-payment-intent", paymentController.paymentCreate);
+router.post("/create-payment-intent/activate-user", controller.activateUser);
+router.post("/stripe-webhook", paymentController.webhook);
 /***
  * TECT
  */

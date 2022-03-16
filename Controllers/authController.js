@@ -10,9 +10,7 @@ class controller {
       if (!errors.isEmpty()) {
         return next(ApiError.BadRequest("validation error", errors.array()));
       }
-      /*const candidate = */ const reg = await authService.registration(
-        req.body
-      );
+      const reg = await authService.registration(req.body);
 
       /* res.cookie("refreshToken", candidate.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -99,6 +97,21 @@ class controller {
     } catch (error) {
       console.log(error);
       res.status(400).json();
+    }
+  }
+  async activateUser(req, res) {
+    console.log("Hello");
+    const client_secret = localStorage.getItem("client_secret");
+    console.log(client_secret);
+    try {
+      if (!req.body) {
+        return res.status(400).json({ message: "error" });
+      }
+      const activate = await authService.activateUser(req.body);
+      return res.status(200).json(activate);
+    } catch (error) {
+      console.log(error);
+      res.status(400).json(error);
     }
   }
 }

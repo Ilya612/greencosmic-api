@@ -5,6 +5,7 @@ import tokenService from "./tokenService.js";
 import UserDto from "../Dtos/userDto.js";
 import ApiError from "../Exceptions/apiErrors.js";
 import EcommpayService from "./ecommpayService.js";
+import PaymentService from "./paymentService.js";
 
 import { v4 as uuid } from "uuid";
 import bcrypt from "bcryptjs";
@@ -20,19 +21,25 @@ class authService {
     const userRole = await role.findOne({ value: "USER" });
     const activationLink = uuid();
 
-    const paymentInformation = await EcommpayService.paymentCreate();
-    if (!paymentInformation) {
+    const stripePayment = await PaymentService.paymentIntent({
+      items: { id: "course" },
+    });
+    if (!stripePayment) {
       throw ApiError.BadRequest("bad request");
     }
-    //await user.paymentId = paymentInformation.paymentId;
+
+    /* const paymentInformation = await EcommpayService.paymentCreate();
+    if (!paymentInformation) {
+      throw ApiError.BadRequest("bad request");
+    }*/
     const user = new User({
       username: body.username,
       password: hashPassword,
-      //activationLink: activationLink,
+
       email: body.email,
       roles: [userRole.value],
       successfullPaymnet: false,
-      paymentId: paymentInformation.paymentId,
+      paymentId: stripePayment,
     });
     await user.save();
 
@@ -50,10 +57,17 @@ class authService {
     const tokens = await tokenService.generateToken({ ...userDto });
 
     await tokenService.saveToken(userDto.id, tokens.refreshToken);*/
-    console.log(paymentInformation);
-    console.log(paymentInformation.url);
-    console.log(paymentInformation.paymentId);
-    return { url: paymentInformation.url };
+
+    return { client_secret: stripePayment };
+  }
+  async activateUser(body) {
+    const activate = await User.findOne({ paymentId: body });
+    if (!activate) {
+      throw ApiError.BadRequest("Uncorrect link");
+    }
+    activate.successfullPaymnet = true;
+    await activate.save();
+    return { successfullPaymnet: activate.successfullPaymnet };
   }
   async activate(activationLink) {
     const user = await User.findOne({ activationLink });

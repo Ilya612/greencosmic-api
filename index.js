@@ -45,7 +45,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://greencosmic-study-1i4soiig5-ilya612.vercel.app",
+    origin: "https://greencosmic-study-ilya612.vercel.app",
   })
 );
 app.use("/api", router);

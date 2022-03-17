@@ -41,8 +41,9 @@ class controller {
         httpOnly: true,
         path: "/",
       });
-      console.log(res.cookies);
+
       res.send("set cookie").status(200).json(candidate);
+      return;
     } catch (error) {
       console.log(error);
       next(error);

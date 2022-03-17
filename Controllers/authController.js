@@ -33,14 +33,11 @@ class controller {
   }
   async login(req, res, next) {
     try {
-      console.log("HHHHHHEEEY IM HERE");
       const candidate = await authService.login(req.body);
-      console.log(candidate);
       res.cookie("refreshToken", candidate.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       });
-      console.log(res);
       return res.status(200).json(candidate);
     } catch (error) {
       console.log(error);
@@ -60,14 +57,8 @@ class controller {
 
   async refresh(req, res) {
     try {
-      console.log("Я попал в рефреш");
-      console.log(req);
-      console.log("*******************");
-      console.log(req.cookie);
-      console.log("**************");
-      console.log(req.cookies);
       const { refreshToken } = req.cookies;
-      console.log(refreshToken);
+
       const token = await authService.refresh(refreshToken);
       res.cookie("refreshToken", token.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,

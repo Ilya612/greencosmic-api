@@ -16,9 +16,12 @@ const PORT = 3002;
 */
 const app = express();
 
-/*app.use(function (req, res, next) {
+app.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://greencosmic-study.vercel.app/"
+  );
 
   // Request methods you wish to allow
   res.setHeader(
@@ -39,16 +42,17 @@ const app = express();
 
   // Pass to next layer of middleware
   next();
-});*/
+});
 
 app.use(express.json());
 app.use(cookieParser());
+/*
 app.use(
   cors({
     credentials: true,
     origin: "https://greencosmic-study.vercel.app/",
   })
-);
+);*/
 
 app.use("/api", router);
 app.use(errorMiddleware);

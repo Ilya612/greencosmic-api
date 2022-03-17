@@ -39,9 +39,10 @@ class controller {
       res.cookie("refreshToken", candidate.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        path: "/",
       });
       console.log(res.cookies);
-      return res.status(200).json(candidate);
+      res.send("set cookie").status(200).json(candidate);
     } catch (error) {
       console.log(error);
       next(error);

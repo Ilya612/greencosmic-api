@@ -60,6 +60,7 @@ class controller {
 
   async refresh(req, res) {
     try {
+      console.log("Я попал в рефреш");
       console.log(req.cookie);
       const { refreshToken } = req.cookie;
       console.log(refreshToken);

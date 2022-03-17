@@ -67,6 +67,8 @@ router.post(
         break;
       case "payment_intent.created":
         const created = event.data.object;
+        console.log("создание платежа");
+        console.log(created);
         // Then define and call a function to handle the event payment_intent.created
         break;
       case "payment_intent.payment_failed":
@@ -82,8 +84,9 @@ router.post(
         // Then define and call a function to handle the event payment_intent.requires_action
         break;
       case "payment_intent.succeeded":
-        console.log("pososi moy hui");
         const succeeded = event.data.object;
+        console.log("Платеж прошел успешно");
+        console.log(succeeded);
         // Then define and call a function to handle the event payment_intent.succeeded
         break;
       // ... handle other event types

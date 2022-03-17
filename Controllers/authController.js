@@ -33,6 +33,7 @@ class controller {
   }
   async login(req, res, next) {
     try {
+      console.log("HHHHHHEEEY IM HERE");
       const candidate = await authService.login(req.body);
       console.log(candidate);
       res.cookie("refreshToken", candidate.refreshToken, {

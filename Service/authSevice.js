@@ -114,10 +114,11 @@ class authService {
     return user;
   }
   async refresh(refreshToken) {
+    console.log("Я влетел в сервис");
     if (!refreshToken) {
       throw ApiError.UnauthError();
     }
-
+    console.log("У меня есть хедер!");
     const token = await tokenService.validateRefreshToken(refreshToken);
 
     const tokenFromDb = await tokenService.findToken(refreshToken);
@@ -125,7 +126,7 @@ class authService {
     if (!token || !tokenFromDb) {
       throw ApiError.UnauthError();
     }
-
+    console.log("да и тут я прошел ");
     const candidate = await User.findById(token.id);
     const userDto = new UserDto(candidate);
 

@@ -48,6 +48,7 @@ app.use(
     origin: "https://greencosmic-study-iviwj8vch-ilya612.vercel.app",
     credentials: true,
     methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(express.json());

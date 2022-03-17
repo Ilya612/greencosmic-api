@@ -12,22 +12,20 @@ class mailService {
       },
     });
   }
-  async sendActivationMail(email, activationLink) {
+  async sendActivationMail(email, password) {
     try {
       await this.transporter.sendMail({
         from: "greencosmicgreencosmic@gmail.com",
         to: email,
         subject: "Activation",
         text: "",
-        html: activationLink,
-        /*"<div>Follow the link to activate your account:</div><a href=" +
-          "'" +
-          activationLink +
-          "'" +
-          ">" +
-          activationLink +
-          "</a>" 
-          ,*/
+        html:
+          "<div>Your password:<div>" +
+          password +
+          "</div></div>" +
+          "<div>Your login:<div>" +
+          email +
+          "</div></div>",
       });
     } catch (error) {
       console.log(error);

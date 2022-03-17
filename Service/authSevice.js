@@ -62,11 +62,16 @@ class authService {
   }
   async activateUser(succeeded) {
     const activate = await User.findOne({ paymentId: succeeded.client_secret });
+    /*  const activate = await User.updateOne({
+      paymentId: succeeded.client_secret,
+    });*/
+
     if (!activate) {
       throw ApiError.BadRequest("Uncorrect link");
     }
-    activate.successfullPaymnet = true;
+    activate.successfullPayment = true;
     await activate.save();
+    //await mailService.sendActivationMail({email: activate.email, })
     return;
   }
   /* async activate(activationLink) {

@@ -57,6 +57,7 @@ class controller {
 
   async refresh(req, res) {
     try {
+      console.log(req.cookies);
       const { refreshToken } = req.cookies;
       console.log(refreshToken);
       const token = await authService.refresh(refreshToken);

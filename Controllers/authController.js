@@ -61,7 +61,11 @@ class controller {
   async refresh(req, res) {
     try {
       console.log("Я попал в рефреш");
+      console.log(req);
+      console.log("*******************");
       console.log(req.cookie);
+      console.log("**************");
+      console.log(req.cookies);
       const { refreshToken } = req.cookie;
       console.log(refreshToken);
       const token = await authService.refresh(refreshToken);

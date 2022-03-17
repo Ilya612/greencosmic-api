@@ -60,23 +60,23 @@ class authService {
 
     return { client_secret: stripePayment };
   }
-  async activateUser(body) {
-    const activate = await User.findOne({ paymentId: body });
+  async activateUser(succeeded) {
+    const activate = await User.findOne({ paymentId: succeeded.client_secret });
     if (!activate) {
       throw ApiError.BadRequest("Uncorrect link");
     }
     activate.successfullPaymnet = true;
     await activate.save();
-    return { successfullPaymnet: activate.successfullPaymnet };
+    return;
   }
-  async activate(activationLink) {
+  /* async activate(activationLink) {
     const user = await User.findOne({ activationLink });
     if (!user) {
       throw ApiError.BadRequest("Uncorrect link");
     }
     user.isActivated = true;
     await user.save();
-  }
+  }*/
   async login(body) {
     const candidate = await User.findOne({ email: body.email });
     if (!candidate) {

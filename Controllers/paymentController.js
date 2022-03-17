@@ -1,4 +1,5 @@
 import stripe from "stripe";
+import authSevice from "../Service/authSevice.js";
 import paymentService from "../Service/paymentService.js";
 
 class paymentController {
@@ -13,21 +14,7 @@ class paymentController {
       res.status(400).json(error);
     }
   }
-  async activate(req, res) {
-    console.log("Hello");
-    try {
-      if (!req.body) {
-        return res.status(400).json({ message: "error" });
-      }
-      const client_secret = localStorage.getItem("client_secret");
-      console.log(client_secret);
-      const activate = await paymentService.activate(req.body);
-      return res.status(200).json(activate);
-    } catch (error) {
-      console.log(error);
-      res.status(400).json(error);
-    }
-  }
+
   async webhook(req, res) {
     const event = req.body;
     console.log(event);
@@ -63,6 +50,7 @@ class paymentController {
         const succeeded = event.data.object;
         console.log("Платеж прошел успешно");
         console.log(succeeded);
+        await authSevice.activateUser(succeeded);
         // Then define and call a function to handle the event payment_intent.succeeded
         break;
       // ... handle other event types

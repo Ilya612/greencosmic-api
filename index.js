@@ -43,7 +43,8 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });*/
-
+app.use(cookieParser());
+app.use(express.json());
 app.use(
   cors({
     origin: "https://greencosmic-study-iviwj8vch-ilya612.vercel.app",
@@ -52,8 +53,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.use(cookieParser());
-app.use(express.json());
 app.use("/api", router);
 app.use(errorMiddleware);
 

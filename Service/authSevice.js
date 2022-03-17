@@ -68,7 +68,7 @@ class authService {
     if (!activate) {
       throw ApiError.BadRequest("Uncorrect link");
     }
-    activate.successfullPayment = true;
+    activate.successfullPaymnet = true;
     await activate.save();
     //await mailService.sendActivationMail({email: activate.email, })
     return;

@@ -21,7 +21,7 @@ export default async function (req, res, next) {
     }
 
     if (!userData.successfullPayment) {
-      return next(ApiError.UnauthError());
+      return next(ApiError.BadRequest());
     }
 
     req.user = userData;

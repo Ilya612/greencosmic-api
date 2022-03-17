@@ -20,7 +20,7 @@ export default async function (req, res, next) {
       return next(ApiError.UnauthError());
     }
     console.log(userData.successfullPayment);
-    if (!userData.successfullPayment) {
+    if (!userData.successfullPaymnet) {
       return next(ApiError.BadRequest());
     }
 

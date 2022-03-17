@@ -66,7 +66,7 @@ class controller {
       console.log(req.cookie);
       console.log("**************");
       console.log(req.cookies);
-      const { refreshToken } = req.cookie;
+      const { refreshToken } = req.cookies;
       console.log(refreshToken);
       const token = await authService.refresh(refreshToken);
       res.cookie("refreshToken", token.refreshToken, {

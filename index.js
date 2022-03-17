@@ -42,13 +42,14 @@ const app = express();
 });*/
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "https://greencosmic-study-ilya612.vercel.app",
+    origin: "https://greencosmic-study.vercel.app/",
   })
 );
-app.use(cookieParser());
+
 app.use("/api", router);
 app.use(errorMiddleware);
 

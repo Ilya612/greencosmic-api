@@ -38,6 +38,7 @@ class controller {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       });
+      console.log(res);
       return res.status(200).json(candidate);
     } catch (error) {
       console.log(error);

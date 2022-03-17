@@ -7,7 +7,7 @@ const User = new mongoose.Schema({
   isActivated: { type: Boolean, default: false },
   activationLink: { type: String },
   roles: [{ type: String, ref: "role" }],
-  successfullPayment: { type: Boolean, default: false },
+  successfullPaymnet: { type: Boolean, default: false },
   paymentId: { type: String, default: "" },
 });
 export default mongoose.model("user", User);

@@ -38,6 +38,7 @@ class courseController {
   }
   async getCourses(req, res) {
     try {
+      console.log(req.user);
       const courses = await courseService.getCourses();
 
       return res.status(200).json(courses);

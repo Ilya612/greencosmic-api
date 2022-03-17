@@ -15,7 +15,7 @@ const PORT = 3002;
   "mongodb+srv://Jobs_Sneakers:a2tmi0fap5PIOBW4@cluster0.vugol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 */
 const app = express();
-
+/*
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
   res.setHeader(
@@ -42,17 +42,16 @@ app.use(function (req, res, next) {
 
   // Pass to next layer of middleware
   next();
-});
-
-app.use(express.json());
-app.use(cookieParser());
-/*
+});*/
 app.use(
   cors({
+    origin: "https://greencosmic-study.vercel.app",
     credentials: true,
-    origin: "https://greencosmic-study.vercel.app/",
+    methods: ["GET", "POST"],
   })
-);*/
+);
+app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api", router);
 app.use(errorMiddleware);

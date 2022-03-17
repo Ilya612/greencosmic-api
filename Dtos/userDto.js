@@ -1,7 +1,6 @@
 export default class UserDto {
   email;
   id;
-  isActivated;
 
   constructor(model) {
     this.email = model.email;
@@ -9,6 +8,7 @@ export default class UserDto {
     this.isActivated = model.isActivated;
     this.username = model.username;
     this.roles = model.roles;
-    this.courses = model.roles;
+    this.paymentId = model.paymentId;
+    this.successfullPaymnet = model.successfullPaymnet;
   }
 }

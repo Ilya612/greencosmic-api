@@ -92,7 +92,7 @@ class authService {
     if (!isPasEquals) {
       throw ApiError.BadRequest("Uncorrect password");
     }
-    console.log(candidate);
+
     const userDto = new UserDto(candidate);
 
     const tokens = await tokenService.generateToken({ ...userDto });

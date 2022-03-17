@@ -49,7 +49,7 @@ class controller {
   }
   async logout(req, res) {
     try {
-      const token = await authService.logout(req.cookies);
+      const token = await authService.logout(req.cookie);
       res.clearCookie("refreshToken");
       return res.json(token);
     } catch (error) {
@@ -60,8 +60,8 @@ class controller {
 
   async refresh(req, res) {
     try {
-      console.log(req.cookies);
-      const { refreshToken } = req.cookies;
+      console.log(req.cookie);
+      const { refreshToken } = req.cookie;
       console.log(refreshToken);
       const token = await authService.refresh(refreshToken);
       res.cookie("refreshToken", token.refreshToken, {

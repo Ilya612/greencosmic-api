@@ -45,7 +45,7 @@ app.use(function (req, res, next) {
 });*/
 app.use(
   cors({
-    origin: "https://greencosmic-study.vercel.app",
+    origin: "https://greencosmic-study-iviwj8vch-ilya612.vercel.app",
     credentials: true,
     methods: ["GET", "POST"],
   })

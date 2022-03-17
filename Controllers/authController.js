@@ -58,6 +58,8 @@ class controller {
   async refresh(req, res) {
     try {
       const { refreshToken } = req.cookies;
+      console.log(req);
+      console.log("************");
       console.log(req.cookies);
       console.log("***************888");
       console.log(refreshToken);
@@ -66,6 +68,7 @@ class controller {
       res.cookie("refreshToken", token.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
+        secure: false,
       });
       return res.status(200).json(token);
     } catch (error) {

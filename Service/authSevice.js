@@ -51,11 +51,11 @@ class authService {
       password: user.password,
       email: body.email,
     });*/
-    const userDto = new UserDto(user); // id, email, isActivated
+    /*const userDto = new UserDto(user); // id, email, isActivated
 
     const tokens = await tokenService.generateToken({ ...userDto });
 
-    await tokenService.saveToken(userDto.id, tokens.refreshToken);
+    await tokenService.saveToken(userDto.id, tokens.refreshToken);*/
 
     return { client_secret: stripePayment };
   }

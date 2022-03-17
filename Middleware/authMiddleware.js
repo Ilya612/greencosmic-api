@@ -19,10 +19,10 @@ export default async function (req, res, next) {
     if (!userData) {
       return next(ApiError.UnauthError());
     }
-    /*
+    console.log(userData.successfullPayment);
     if (!userData.successfullPayment) {
       return next(ApiError.BadRequest());
-    }*/
+    }
 
     req.user = userData;
 

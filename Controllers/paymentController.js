@@ -71,7 +71,7 @@ class paymentController {
     }
 
     // Return a response to acknowledge receipt of the event
-    return res.json({ received: true });
+    return res.status(200).json({ received: true });
   }
 }
 export default new paymentController();

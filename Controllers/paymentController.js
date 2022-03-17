@@ -32,6 +32,7 @@ class paymentController {
     try {
       const event = req.body;
       console.log(event);
+      // Handle the event
       switch (event.type) {
         case "payment_intent.amount_capturable_updated":
           const amount_capturable_updated = event.data.object;
@@ -43,6 +44,8 @@ class paymentController {
           break;
         case "payment_intent.created":
           const created = event.data.object;
+          console.log("создание платежа");
+          console.log(created);
           // Then define and call a function to handle the event payment_intent.created
           break;
         case "payment_intent.payment_failed":
@@ -58,16 +61,18 @@ class paymentController {
           // Then define and call a function to handle the event payment_intent.requires_action
           break;
         case "payment_intent.succeeded":
-          console.log("pososi moy hui");
           const succeeded = event.data.object;
+          console.log("Платеж прошел успешно");
+          console.log(succeeded);
           // Then define and call a function to handle the event payment_intent.succeeded
           break;
         // ... handle other event types
         default:
           console.log(`Unhandled event type ${event.type}`);
       }
-      console.log("Eran Eyger");
-      return res.status(200).json({ received: true });
+
+      // Return a response to acknowledge receipt of the event
+      return res.json({ received: true });
     } catch (error) {
       console.log(error);
       return res.status(400).json(error);

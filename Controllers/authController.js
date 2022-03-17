@@ -58,6 +58,7 @@ class controller {
   async refresh(req, res) {
     try {
       const { refreshToken } = req.cookies;
+      console.log(req.cookies);
       console.log("***************888");
       console.log(refreshToken);
 

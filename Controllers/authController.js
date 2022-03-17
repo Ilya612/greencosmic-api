@@ -35,11 +35,15 @@ class controller {
     try {
       console.log(req);
       const candidate = await authService.login(req.body);
-
+      console.log("********8");
+      console.log(candidate);
       res.cookie("refreshToken", candidate.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       });
+
+      console.log("***********");
+      console.log(res);
 
       return res.status(200).json(candidate);
     } catch (error) {

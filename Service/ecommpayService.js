@@ -1,4 +1,4 @@
-import { Payment } from "ecommpay";
+/*import { Payment } from "ecommpay";
 import { Callback } from "ecommpay";
 import { v4 as uuid } from "uuid";
 import User from "../Models/user.js";
@@ -51,3 +51,4 @@ class EcommpayService {
   }
 }
 export default new EcommpayService();
+*/

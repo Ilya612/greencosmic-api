@@ -1,4 +1,4 @@
-import EcommpayService from "../Service/ecommpayService.js";
+/*import EcommpayService from "../Service/ecommpayService.js";
 
 class EcommpayController {
   async paymentCreate(req, res) {
@@ -21,3 +21,4 @@ class EcommpayController {
   }
 }
 export default new EcommpayController();
+*/

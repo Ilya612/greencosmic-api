@@ -4,7 +4,7 @@ import courseController from "./Controllers/courseController.js";
 import authMiddleware from "./Middleware/authMiddleware.js";
 import paymentController from "./Controllers/paymentController.js";
 import adminMiddleware from "./Middleware/adminMiddleware.js";
-import EcommpayController from "./Controllers/ecommpayController.js";
+//import EcommpayController from "./Controllers/ecommpayController.js";
 
 import { check, body } from "express-validator";
 import authController from "./Controllers/authController.js";

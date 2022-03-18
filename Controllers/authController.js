@@ -35,15 +35,6 @@ class controller {
     try {
       console.log(req.headers);
       const candidate = await authService.login(req.body);
-      /*  res.cookie(
-        "refreshToken",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlseWFAZ3JlZW5jc29taWMuY29tIiwiaWQiOiI2MjMzMjQyNmE5NDczY2EyNDY5ZmU5NjEiLCJzdWNjZXNzZnVsbFBheW1uZXQiOnRydWUsImlzQWN0aXZhdGVkIjpmYWxzZSwidXNlcm5hbWUiOiJpbHlhcyIsInJvbGVzIjpbIlVTRVIiXSwicGF5bWVudElkIjoicGlfM0tlSTVaRjk1RTZ4R0ZwRDAzVkNGaFByX3NlY3JldF9aaFdZY2RtQTY3c2s3ZmVRR3R2MnVOVjdsIiwiaWF0IjoxNjQ3NTQ3NjgwLCJleHAiOjE2NTAxMzk2ODB9.wI4SWNkknSqjkl8ilEio_Y08ivXd54NLEws6Y-qWkCU", {
-           maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        path: "/",
-        secure: true,
-        }
-      );*/
 
       res.cookie("refreshToken", candidate.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,

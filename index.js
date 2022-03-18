@@ -11,43 +11,13 @@ dotenv.config();
 
 const PORT = 3002;
 
-/*const DB_URL =
-  "mongodb+srv://Jobs_Sneakers:a2tmi0fap5PIOBW4@cluster0.vugol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-*/
 const app = express();
-/*
-app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://greencosmic-study.vercel.app"
-  );
 
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  // Request headers you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type",
-    "Authorization"
-  );
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader("Access-Control-Allow-Credentials", true);
-
-  // Pass to next layer of middleware
-  next();
-});*/
 app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://greencosmic-study-iviwj8vch-ilya612.vercel.app",
+    origin: "https://greencosmic-study-3jh7sj0yu-ilya612.vercel.app",
     credentials: true,
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],

@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Origin",
     "https://greencosmic-study-n5u596i1t-ilya612.vercel.app"
   );
-  res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header(
     "Access-Control-Allow-Headers",

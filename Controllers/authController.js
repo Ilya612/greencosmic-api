@@ -41,7 +41,7 @@ class controller {
         httpOnly: false,
       });
 
-      return res.status(200).json(candidate);
+      return res.json(candidate);
     } catch (error) {
       console.log(error);
       next(error);
@@ -60,7 +60,7 @@ class controller {
 
   async refresh(req, res) {
     try {
-      const refreshToken = req.cookies["refreshToken"];
+      const { refreshToken } = req.cookies;
       console.log("************");
       console.log(refreshToken);
       const token = await authService.refresh(refreshToken);
@@ -68,7 +68,7 @@ class controller {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       });
-      return res.status(200).json(token);
+      return res.json(token);
     } catch (error) {
       console.log(error);
       res.status(400).json();

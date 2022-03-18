@@ -36,16 +36,15 @@ class controller {
       console.log(req.headers);
       const candidate = await authService.login(req.body);
 
-      return res
-        .status(200)
-        .cookie("refreshToken", candidate.refreshToken, {
-          expires: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000),
-          httpOnly: false,
-          path: "/",
-          secure: true,
-          sameSite: "strict",
-        })
-        .json(candidate);
+      res.cookie("refreshToken", candidate.refreshToken, {
+        expires: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000),
+        httpOnly: false,
+        path: "/",
+        secure: true,
+        sameSite: "strict",
+      });
+      res.send("cookie");
+      // .json(candidate);
     } catch (error) {
       console.log(error);
       next(error);

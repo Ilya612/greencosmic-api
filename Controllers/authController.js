@@ -38,7 +38,9 @@ class controller {
 
       res.cookie("refreshToken", candidate.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: false,
+        httpOnly: true,
+        path: "/",
+        secure: true,
       });
 
       return res.json(candidate);

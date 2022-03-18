@@ -15,14 +15,26 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://greencosmic-study-q0p15rjjj-ilya612.vercel.app"
+  );
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+/*
 app.use(
   cors({
     origin: "https://greencosmic-study-3jh7sj0yu-ilya612.vercel.app",
     credentials: true,
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
-);
+);*/
 app.use("/api", router);
 app.use(errorMiddleware);
 

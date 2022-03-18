@@ -37,14 +37,14 @@ class controller {
       const candidate = await authService.login(req.body);
 
       res.cookie("refreshToken", candidate.refreshToken, {
-        expires: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000),
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        hostOnly: false,
         httpOnly: false,
         path: "/",
         secure: true,
-        sameSite: "strict",
       });
-      res.send("cookie");
-      // .json(candidate);
+
+      return res.status(200).json(candidate);
     } catch (error) {
       console.log(error);
       next(error);

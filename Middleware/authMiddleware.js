@@ -15,11 +15,11 @@ export default async function (req, res, next) {
     }
 
     const userData = await tokenService.validateAccessToken(accessToken);
-    console.log(userData);
+
     if (!userData) {
       return next(ApiError.UnauthError());
     }
-    console.log(userData.successfullPayment);
+
     if (!userData.successfullPaymnet) {
       return next(ApiError.BadRequest());
     }

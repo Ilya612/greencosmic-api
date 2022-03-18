@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://greencosmic-study-n5u596i1t-ilya612.vercel.app"
+    "https://greencosmic-study-16dzt7bwj-ilya612.vercel.app"
   );
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");

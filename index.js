@@ -21,9 +21,10 @@ app.use(function (req, res, next) {
     "https://greencosmic-study-q0p15rjjj-ilya612.vercel.app"
   );
   res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header(
     "Access-Control-Allow-Headers",
-    "Authorization Origin, X-Requested-With, Content-Type, Accept"
+    "Authorization, Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
 });

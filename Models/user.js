@@ -9,5 +9,11 @@ const User = new mongoose.Schema({
   roles: [{ type: String, ref: "role" }],
   successfullPaymnet: { type: Boolean, default: false },
   paymentId: { type: String, default: "" },
+  city: { type: String, default: "" },
+  phoneNumber: { type: String, default: "" },
+  birthday: { type: String, default: "" },
+  linkFacebook: { type: String, default: "" },
+  linkLinkedIn: { type: String, default: "" },
+  linkInstagram: { type: String, default: "" },
 });
 export default mongoose.model("user", User);

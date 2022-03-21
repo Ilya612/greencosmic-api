@@ -97,19 +97,19 @@ class controller {
   }
   async getUserInformation(req, res) {
     try {
-      const { refreshToken } = req.cookies;
+      if (!req.user) {
+        return res.status(400).json({ message: "error" });
+      }
 
-      const candidate = await authService.getUserInformation(refreshToken);
-      return res.status(200).json(candidate);
+      return res.status(200).json(req.user);
     } catch (error) {
       console.log(error);
       res.status(400).json();
     }
   }
   async activateUser(req, res) {
-    console.log("Hello");
     const client_secret = localStorage.getItem("client_secret");
-    console.log(client_secret);
+
     try {
       if (!req.body) {
         return res.status(400).json({ message: "error" });

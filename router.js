@@ -66,6 +66,11 @@ router.post(
   authMiddleware,
   authController.getUserInformation
 );
+router.post(
+  "/set-user-information",
+  authMiddleware,
+  authController.setUserInformation
+);
 router.get("/course/all", authMiddleware, courseController.getCourses);
 router.post(
   "/course/description",

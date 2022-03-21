@@ -100,8 +100,20 @@ class controller {
       if (!req.user) {
         return res.status(400).json({ message: "error" });
       }
-      console.log(req.user);
+
       return res.status(200).json(req.user);
+    } catch (error) {
+      console.log(error);
+      res.status(400).json();
+    }
+  }
+  async setUserInformation(req, res) {
+    try {
+      const user = await authService.setUserInformation({
+        body: req.body,
+        user: req.user,
+      });
+      return res.status(200).json(user);
     } catch (error) {
       console.log(error);
       res.status(400).json();

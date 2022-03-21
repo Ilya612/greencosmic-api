@@ -153,5 +153,20 @@ class authService {
     }
     return user;
   }
+  async setUserInformation(inf) {
+    const user = await User.findOne({ email: inf.user.email });
+    if (!user) {
+      throw ApiError.UnauthError();
+    }
+    user.city = inf.body?.city;
+    user.birthday = inf.body?.birthday;
+    user.username = inf.body?.username;
+    user.phoneNumber = inf.body?.phoneNumber;
+    user.linkFacebook = inf.body?.linkFacebook;
+    user.linkLinkedIn = inf.body?.linkLinkedIn;
+    user.linkInstagram = inf.body?.linkInstagram;
+    await user.save();
+    return user;
+  }
 }
 export default new authService();

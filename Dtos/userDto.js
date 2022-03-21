@@ -11,5 +11,11 @@ export default class UserDto {
     this.roles = model.roles;
     this.successfullPaymnet = model.successfullPaymnet;
     this.paymentId = model.paymentId;
+    this.birthday = model.birthday;
+    this.phoneNumber = model.phoneNumber;
+    this.city = model.city;
+    this.linkFacebook = model.linkFacebook;
+    this.linkLinkedIn = model.linkLinkedIn;
+    this.linkInstagram = model.linkInstagram;
   }
 }

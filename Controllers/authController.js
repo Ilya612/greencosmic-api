@@ -97,11 +97,8 @@ class controller {
   }
   async getUserInformation(req, res) {
     try {
-      if (!req.user) {
-        return res.status(400).json({ message: "error" });
-      }
-
-      return res.status(200).json(req.user);
+      const user = await authService.getUserInformation(req.user);
+      return res.status(200).json(user);
     } catch (error) {
       console.log(error);
       res.status(400).json();
@@ -120,7 +117,7 @@ class controller {
     }
   }
   async activateUser(req, res) {
-    const client_secret = localStorage.getItem("client_secret");
+    //const client_secret = localStorage.getItem("client_secret");
 
     try {
       if (!req.body) {

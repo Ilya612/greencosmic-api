@@ -16,8 +16,6 @@ class authService {
     if (candidate) {
       throw ApiError.BadRequest("email is already registrated");
     }
-
-    const hashPassword = bcrypt.hashSync(body.password, 7);
     const userRole = await role.findOne({ value: "USER" });
     const activationLink = uuid();
 
@@ -34,7 +32,7 @@ class authService {
     }*/
     const user = new User({
       username: body.username,
-      password: hashPassword,
+      password: body.password,
       email: body.email,
       roles: [userRole.value],
       successfullPaymnet: false,
@@ -42,10 +40,6 @@ class authService {
     });
     await user.save();
 
-    /*  await mailService.sendActivationMail(
-      body.email,
-      "http://localhost:3001/api/activate/" + activationLink
-    );*/
     /*await mailService.sendInf({
       username: user.username,
       password: user.password,
@@ -61,6 +55,10 @@ class authService {
   }
   async activateUser(succeeded) {
     const activate = await User.findOne({ paymentId: succeeded.client_secret });
+    await mailService.sendActivationMail({
+      email: activate.email,
+      password: activate.password,
+    });
     /*  const activate = await User.updateOne({
       paymentId: succeeded.client_secret,
     });*/
@@ -87,11 +85,13 @@ class authService {
       throw ApiError.BadRequest("User not found");
     }
     // const match = await bcrypt.compare(password, user.passwordHash);
-
-    const isPasEquals = await bcrypt.compare(body.password, candidate.password);
-    if (!isPasEquals) {
+    if (body.password !== candidate.password) {
       throw ApiError.BadRequest("Uncorrect password");
     }
+    /*const isPasEquals = await bcrypt.compare(body.password, candidate.password);
+    if (!isPasEquals) {
+      throw ApiError.BadRequest("Uncorrect password");
+    }*/
 
     const userDto = new UserDto(candidate);
 
@@ -142,15 +142,12 @@ class authService {
     const users = await User.find();
     return users;
   }
-  async getUserInformation(refreshToken) {
-    if (!refreshToken) {
-      throw ApiError.UnauthError();
-    }
-    const user = tokenService.validateRefreshToken(refreshToken);
-    console.log(user);
+  async getUserInformation(user) {
+    const user = User.findOne({ email: user.email });
     if (!user) {
       throw ApiError.UnauthError();
     }
+
     return user;
   }
   async setUserInformation(inf) {

@@ -143,12 +143,12 @@ class authService {
     return users;
   }
   async getUserInformation(user) {
-    const user = User.findOne({ email: user.email });
-    if (!user) {
+    const userInf = User.findOne({ email: user.email });
+    if (!userInf) {
       throw ApiError.UnauthError();
     }
 
-    return user;
+    return userInf;
   }
   async setUserInformation(inf) {
     const user = await User.findOne({ email: inf.user.email });

@@ -18,13 +18,13 @@ app.use(express.json());
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://greencosmic-study-b9fxp92p1-ilya612.vercel.app"
+    "greencosmic-study-b9fxp92p1-ilya612.vercel.app"
   );
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header(
     "Access-Control-Allow-Headers",
-    "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, Authorization, X-Requested-With, Content-Type, Accept"
   );
   next();
 });
